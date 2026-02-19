@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<h1>Kanban Доска</h1>
+
+<div class="board">
+    <div class="column">
+        <h2>Запланировано</h2>
+        <button onclick="addCard()">➕ Добавить</button>
+        <div id="col1"></div>
+    </div>
+
+    <div class="column">
+        <h2>В работе</h2>
+        <div id="col2"></div>
+    </div>
+
+    <div class="column">
+        <h2>Тестирование</h2>
+        <div id="col3"></div>
+    </div>
+
+    <div class="column">
+        <h2>Выполнено</h2>
+        <div id="col4"></div>
+    </div>
+</div>
+
+<!-- Модалка для карточки -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span onclick="closeModal()" class="close">&times;</span>
+        <h3 id="modalTitle">Новая задача</h3>
+        <input type="hidden" id="editId">
+        <label>Заголовок:</label>
+        <input type="text" id="title" required>
+        <label>Описание:</label>
+        <textarea id="desc" required></textarea>
+        <label>Дедлайн:</label>
+        <input type="datetime-local" id="deadline" required>
+        <button onclick="saveCard()">Сохранить</button>
+        <button onclick="closeModal()">Отмена</button>
+    </div>
+</div>
+
+<!-- Модалка для причины возврата -->
+<div id="returnModal" class="modal">
+    <div class="modal-content">
+        <span onclick="closeReturnModal()" class="close">&times;</span>
+        <h3>Вернуть в работу</h3>
+        <input type="hidden" id="returnId">
+        <label>Причина:</label>
+        <textarea id="reason" required></textarea>
+        <button onclick="returnToWork()">Вернуть</button>
+        <button onclick="closeReturnModal()">Отмена</button>
+    </div>
+</div>
+
+<script src="/js/main.js"></script>
+</body>
+</html>
